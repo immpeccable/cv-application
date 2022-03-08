@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import React, { Component } from "react";
 import '.././App.css'
 import EducationItem from './educationItem';
+import ExperienceItem from './ExperienceItem';
 
 class SetCv extends Component {
 
@@ -28,6 +29,12 @@ class SetCv extends Component {
 
         })
 
+    }
+    renderExperience(){
+        const {onChangeExperience, onDeleteExperience, onAddExperience } = this.props;
+        return this.props.experienceArray.map((el) =>{
+            return <ExperienceItem idx = {el.uid} onChange = {onChangeExperience} onDeleteExperience = {onDeleteExperience} position = {el.position} company = {el.company} city = {el.city} from = {el.from} to = {el.to}></ExperienceItem>
+        })
     }
 
   render() {
@@ -65,13 +72,13 @@ class SetCv extends Component {
                 <div className="pers-info-descr">
                     Experience
                 </div>
-                {/*<input onChange={this.handleFirstName} className="first-name" type="text" id="position" placeholder="Position" value={this.state.position} />
-                <input onChange={this.handleFirstName} className="last-name" type="text" id="company" placeholder="Company" value={this.state.company} />
-                <input onChange={this.handleFirstName} className="title" type="text" id="cityExp" placeholder="City" value={this.state.cityExp} />
-                <input onChange={this.handleFirstName} className="address" type="text" id="fromExp" placeholder="From" value={this.state.fromExp} />
-                <input onChange={this.handleFirstName} className="phone-number" type="text" id="toExp" placeholder="To" value={this.state.toExp} />
-                <button className='education-button' id="experience-delete-button">Delete</button>
-  <button className='education-button' id="experience-add-button">Add</button>*/}
+                <div id = "experience-form-array">
+                    {this.renderExperience()}
+                </div>
+
+                <div>
+                    <button onClick = {this.props.onAddExperience} className = "education-button" >Add</button>
+                </div>
             </div>
 
         </div>

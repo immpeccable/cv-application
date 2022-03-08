@@ -18,8 +18,12 @@ class GeneralInfo extends Component {
         this.addEducationInfo = this.addEducationInfo.bind(this);
         this.onChangeEducationInfo = this.onChangeEducationInfo.bind(this);
         this.onDeleteEducationInfo = this.onDeleteEducationInfo.bind(this);
+        this.onAddExperienceInfo = this.onAddExperienceInfo.bind(this);
+        this.onChangeExperienceInfo = this.onChangeExperienceInfo.bind(this);
+        this.onDeleteExperienceInfo = this.onDeleteExperienceInfo.bind(this);
 
         this.addEducationInfo();
+        this.onAddExperienceInfo();
 
 
 
@@ -49,6 +53,80 @@ class GeneralInfo extends Component {
             ]
 
         }
+    }
+
+    onChangeExperienceInfo(e) {
+        let parid = document.getElementById(e.target.id).parentNode.id;
+        //console.log("parid: " + parid);
+
+        this.prevStateExperience = this.prevStateExperience.map((obj) => {
+
+            if (obj.uid === parid) {
+                let pure = e.target.id.replace(parid, "");
+                console.log("pure: " + pure);
+                return { ...obj, [pure]: e.target.value };
+            } else {
+                return { ...obj }
+            }
+        });
+
+
+        this.setState({
+            experience: [
+                this.state.experience.map((el) => {
+                    if (el.uid === parid) {
+                        let pure = e.target.id.replace(parid, "");
+                        console.log("pure: " + pure);
+                        return { ...el, [pure]: e.target.value }
+                    } else {
+                        return { ...el }
+                    }
+                })
+            ]
+
+        })
+    }
+
+    onAddExperienceInfo() {
+        let unid = uniqid();
+        this.setState({
+            experience: [
+                ...this.prevStateExperience, {
+                    uid: unid,
+                    position: "",
+                    company: "",
+                    city: "",
+                    from: "",
+                    to: "",
+                }
+            ]
+        })
+
+        this.prevStateExperience.push({
+            uid: unid,
+            position: "",
+            company: "",
+            city: "",
+            from: "",
+            to: "",
+        })
+    }
+
+    onDeleteExperienceInfo(e) {
+        console.log("on delete experience")
+        let parid = document.getElementById(e.target.id).parentNode.id;
+
+        this.prevStateExperience = this.prevStateExperience.filter((el) => {
+            return el.uid !== parid
+        })
+        //console.log("ondeleteExperience")
+        this.setState({
+            experience: [
+                this.state.experience.filter((el) => {
+                    return el.uid !== parid;
+                })
+            ]
+        })
     }
 
     onChangePersonalInfo(event) {
@@ -140,18 +218,18 @@ class GeneralInfo extends Component {
         let parid = document.getElementById(e.target.id).parentNode.id;
 
         this.prevStateEducation = this.prevStateEducation.filter((el) => {
-           return el.uid !== parid
+            return el.uid !== parid
         })
         console.log("ondeleteducaiton")
         this.setState({
             education: [
-                this.state.education.filter((el) =>{
-                    return el.uid !==parid;
+                this.state.education.filter((el) => {
+                    return el.uid !== parid;
                 })
             ]
         })
 
-        
+
         console.log(e.target.id);
         console.log(document.getElementById(e.target.id).parentNode)
 
@@ -161,7 +239,7 @@ class GeneralInfo extends Component {
 
 
     render() {
-        return <SetCv onDeleteEducation = {this.onDeleteEducationInfo} onAddEducation={this.addEducationInfo} onChangePersonal={this.onChangePersonalInfo} onChangeEducation={this.onChangeEducationInfo} persInfo={this.state.personalInfo} educationArray={this.prevStateEducation} experienceArray={this.prevStateExperience}></SetCv>
+        return <SetCv onChangeExperience = {this.onChangeExperienceInfo} onDeleteExperience = {this.onDeleteExperienceInfo} onAddExperience = {this.onAddExperienceInfo} onDeleteEducation={this.onDeleteEducationInfo} onAddEducation={this.addEducationInfo} onChangePersonal={this.onChangePersonalInfo} onChangeEducation={this.onChangeEducationInfo} persInfo={this.state.personalInfo} educationArray={this.prevStateEducation} experienceArray={this.prevStateExperience}></SetCv>
     }
 
 }

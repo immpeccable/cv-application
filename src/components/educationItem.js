@@ -6,12 +6,7 @@ import '.././App.css'
 class EducationItem extends Component {
 
 
-    constructor(props) {
-
-        super(props);
-        
-
-    }
+    
 
     render() {
 
