@@ -10,16 +10,21 @@ class SetCv extends Component {
 
         
        this.renderEducation = this.renderEducation.bind(this)
+       //console.log("educationArray: ")
        console.log(this.props.educationArray);
     }
 
     renderEducation(){
-        console.log(this.props.educationArray);
         
         return this.props.educationArray.map((el) =>{
-            console.log("merhaba");
-            console.log(el)
-            return <EducationItem uid = {el.uid} onChangee = {this.props.onChangeEducation} key = {el.uid} universityName = {el.universityName} city = {el.city} degree = {el.degree} subject = {el.subject} from = {el.from} to = {el.to}/>
+            
+            /*console.log("setcv el.uid: ")
+            console.log(el);
+            console.log(el.uid);
+            console.log(el.universityName);
+            console.log(el.city);
+            console.log(el.degree)*/
+            return <EducationItem onDeleteEducation = {this.props.onDeleteEducation} idx = {el.uid} clickFunc = {this.props.onAddEducation} onChangee = {this.props.onChangeEducation}  universityName = {el.universityName} city = {el.city} degree = {el.degree} subject = {el.subject} from = {el.from} to = {el.to}/>
 
         })
 
@@ -52,7 +57,7 @@ class SetCv extends Component {
 
                 </div>
                 <div>
-                    <button className='education-button' id="education-add-button">Add</button>
+                    <button onClick={this.props.onAddEducation} className='education-button' id="education-add-button">Add</button>
                 </div>
             </div>
 
