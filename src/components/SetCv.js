@@ -39,7 +39,7 @@ class SetCv extends Component {
 
   render() {
     const {persInfo, onChangePersonal} = this.props;
-    return <div className='input-main'>
+    return <div className='input-field'>
             <div className="personal-info">
                 <div className="pers-info-descr">
                     Personal Information

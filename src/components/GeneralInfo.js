@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import '.././App.css'
 import uniqid from "uniqid";
 import SetCv from './SetCv';
+import CvDisplay from "./CvDisplay";
 import ReactDOM from 'react-dom';
 
 
@@ -38,14 +39,7 @@ class GeneralInfo extends Component {
                 description: "",
             },
             experience: [
-                /*{
-                    //id: uuidv4(),
-                    position: "",
-                    company: "",
-                    city: "",
-                    from: "",
-                    to: "",
-                },*/
+                
             ],
             education: [
 
@@ -131,16 +125,9 @@ class GeneralInfo extends Component {
 
     onChangePersonalInfo(event) {
 
-        try {
-            console.log(event.target.id + " " + event.target.value);
-            this.setState({
-                personalInfo: {
-                    [event.target.id]: event.target.value
-                }
-            })
-        } catch (e) {
-            console.log(e);
-        }
+        this.setState({
+            personalInfo: {...this.state.personalInfo, [event.target.id]: event.target.value}
+        })
 
     }
 
@@ -239,7 +226,11 @@ class GeneralInfo extends Component {
 
 
     render() {
-        return <SetCv onChangeExperience = {this.onChangeExperienceInfo} onDeleteExperience = {this.onDeleteExperienceInfo} onAddExperience = {this.onAddExperienceInfo} onDeleteEducation={this.onDeleteEducationInfo} onAddEducation={this.addEducationInfo} onChangePersonal={this.onChangePersonalInfo} onChangeEducation={this.onChangeEducationInfo} persInfo={this.state.personalInfo} educationArray={this.prevStateEducation} experienceArray={this.prevStateExperience}></SetCv>
+        return  <div className = "main-content">
+          <SetCv onChangeExperience = {this.onChangeExperienceInfo} onDeleteExperience = {this.onDeleteExperienceInfo} onAddExperience = {this.onAddExperienceInfo} onDeleteEducation={this.onDeleteEducationInfo} onAddEducation={this.addEducationInfo} onChangePersonal={this.onChangePersonalInfo} onChangeEducation={this.onChangeEducationInfo} persInfo={this.state.personalInfo} educationArray={this.prevStateEducation} experienceArray={this.prevStateExperience}></SetCv>
+          <CvDisplay persInfo = {this.state.personalInfo} experienceArray = {this.prevStateExperience} educationArray = {this.prevStateEducation}></CvDisplay>
+      </div>        
+        
     }
 
 }

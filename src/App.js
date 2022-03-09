@@ -14,14 +14,7 @@ class App extends Component {
      
     return <div className = "app-root">
       <Header></Header>
-      <div className = "main-content">
-          <div className = "input-field">
-            <GeneralInfo></GeneralInfo>
-          </div>
-          <div className = "cv-display">
-
-          </div>
-      </div>
+      <GeneralInfo></GeneralInfo>
       <Footer></Footer>
     </div>
     

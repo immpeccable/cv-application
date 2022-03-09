@@ -1,5 +1,8 @@
 body{
     margin: 0;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.6rem;
+    color: rgb(51, 51, 51);
 }
 
 .header{
@@ -22,12 +25,12 @@ body{
     padding-top: 10vh;
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100vw;
     gap: 80px;
-    width: 100vw;
     background-color: #D1D1D1;
     padding-bottom: 10vh;
+    flex-grow: 0;
+    
 
 }
 .input-field{
@@ -86,12 +89,76 @@ body{
 .education-button:active{
     background-color: black;
 }
+.name-display, .surname-display{
+    
+    height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+.name-surname-display{
+    display: flex;
+    gap: 15px;
+}
+.title-display{
+    font-size: 25px;
+    font-weight: 500;
+}
+.display-pers-info{
+    width: calc(40vw - 50px);
+    height: 10vh;
+    background-color: #151D3B;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+}
 
 .cv-display{
-    height: 85vh;
     width: 40vw;
+    height: 110vh;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-direction: column;
     border-radius: 5px;
+    flex-grow: 0;
 }
+.main-display{
+    display: flex;
+}
+
+.education-experience-display{
+    height: 90vh;
+    width: 30vw; 
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.phone-email-address-display{
+    width: 13vw;
+    height: calc(100vh - 50px);
+    background-color: rgb(221, 221, 221);
+    box-shadow: 10px 8px 10px #888888;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.pers-details-text{
+    color:#151D3B;
+    font-size: 20px;
+    border-bottom: 1px solid rgb(196, 187, 187);
+    padding-bottom: 4px;
+    width: 10vw;
+}
+
 .first-name, .last-name, .title, .description, .phone-number, .address, .email{
     border: none;
     background-color: white;
@@ -126,4 +193,59 @@ body{
 
     transform: scale(1.3);
     
+}
+
+.feature-value{
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+    width: 11vw;
+    gap: 5px;
+    font-size: 18px;
+    color: black
+}
+
+.value{
+    /*border: 2px solid black;*/
+    font-size: 16px;
+    color:rgb(88, 80, 80);
+    overflow-wrap: break-word;
+    font-weight: bold
+}
+.description-text{
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+    color:#4e4a4a;
+    font-weight: bold;
+}
+.desc-info{
+    border-bottom: 1px solid gray;
+    padding-bottom: 5px;
+    font-size: 16px;
+    color:#151D3B;
+    font-weight: bolder;
+}
+.education-array-info{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 1rem;
+}
+.education-display-item{
+    display: flex;
+    font-size: 16px;
+    gap: 2rem;
+}
+.from-to{
+    font-weight: bolder;
+}
+.university-city-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.uni{
+    font-weight: bolder;
 }
