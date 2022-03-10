@@ -10,7 +10,7 @@ class ExperienceDisplay extends Component{
 
     render(){
         const {from, to, company, position, city} = this.props
-        console.log("eddisplay")
+        //console.log("eddisplay")
        
         return <div className="education-display-item">
         <div>

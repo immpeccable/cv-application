@@ -10,7 +10,7 @@ class EducationDisplay extends Component{
 
     render(){
         const {from, to, universityName, degree, subject, city} = this.props
-        console.log("eddisplay")
+        //console.log("eddisplay")
        
         return <div className="education-display-item">
         <div>

@@ -22,6 +22,8 @@ class GeneralInfo extends Component {
         this.onAddExperienceInfo = this.onAddExperienceInfo.bind(this);
         this.onChangeExperienceInfo = this.onChangeExperienceInfo.bind(this);
         this.onDeleteExperienceInfo = this.onDeleteExperienceInfo.bind(this);
+        this.onClickReset = this.onClickReset.bind(this);
+
 
         this.addEducationInfo();
         this.onAddExperienceInfo();
@@ -57,7 +59,7 @@ class GeneralInfo extends Component {
 
             if (obj.uid === parid) {
                 let pure = e.target.id.replace(parid, "");
-                console.log("pure: " + pure);
+                //console.log("pure: " + pure);
                 return { ...obj, [pure]: e.target.value };
             } else {
                 return { ...obj }
@@ -70,7 +72,7 @@ class GeneralInfo extends Component {
                 this.state.experience.map((el) => {
                     if (el.uid === parid) {
                         let pure = e.target.id.replace(parid, "");
-                        console.log("pure: " + pure);
+                        //console.log("pure: " + pure);
                         return { ...el, [pure]: e.target.value }
                     } else {
                         return { ...el }
@@ -107,7 +109,7 @@ class GeneralInfo extends Component {
     }
 
     onDeleteExperienceInfo(e) {
-        console.log("on delete experience")
+        //console.log("on delete experience")
         let parid = document.getElementById(e.target.id).parentNode.id;
 
         this.prevStateExperience = this.prevStateExperience.filter((el) => {
@@ -167,7 +169,7 @@ class GeneralInfo extends Component {
         /*console.log(e.target.id + " " + e.target.value);
         console.log(document.getElementById(e.target.id).parentNode);
         console.log(this.prevStateEducation);*/
-        console.log("change called");
+        //console.log("change called");
         let parid = document.getElementById(e.target.id).parentNode.id;
         //console.log("parid: " + parid);
 
@@ -175,7 +177,7 @@ class GeneralInfo extends Component {
 
             if (obj.uid === parid) {
                 let pure = e.target.id.replace(parid, "");
-                console.log("pure: " + pure);
+                //console.log("pure: " + pure);
                 return { ...obj, [pure]: e.target.value };
             } else {
                 return { ...obj }
@@ -188,7 +190,7 @@ class GeneralInfo extends Component {
                 this.state.education.map((el) => {
                     if (el.uid === parid) {
                         let pure = e.target.id.replace(parid, "");
-                        console.log("pure: " + pure);
+                        //console.log("pure: " + pure);
                         return { ...el, [pure]: e.target.value }
                     } else {
                         return { ...el }
@@ -201,13 +203,12 @@ class GeneralInfo extends Component {
 
     onDeleteEducationInfo(e) {
 
-        console.log("why tf are u calling")
         let parid = document.getElementById(e.target.id).parentNode.id;
 
         this.prevStateEducation = this.prevStateEducation.filter((el) => {
             return el.uid !== parid
         })
-        console.log("ondeleteducaiton")
+        //console.log("ondeleteducaiton")
         this.setState({
             education: [
                 this.state.education.filter((el) => {
@@ -217,17 +218,38 @@ class GeneralInfo extends Component {
         })
 
 
-        console.log(e.target.id);
-        console.log(document.getElementById(e.target.id).parentNode)
+        /*console.log(e.target.id);
+        console.log(document.getElementById(e.target.id).parentNode)*/
 
     }
+    onClickReset(){
+        this.prevStateEducation = [];
+        this.prevStateExperience = [];
+        this.setState({
+            personalInfo: {
+                firstName: "",
+                lastName: "",
+                title: "",
+                address: "",
+                phoneNumber: "",
+                email: "",
+                description: "",
+            },
+            experience: [
+                
+            ],
+            education: [
 
 
+            ]
+        })
+        this.addEducationInfo();
+        this.onAddExperienceInfo();
 
-
+    }
     render() {
         return  <div className = "main-content">
-          <SetCv onChangeExperience = {this.onChangeExperienceInfo} onDeleteExperience = {this.onDeleteExperienceInfo} onAddExperience = {this.onAddExperienceInfo} onDeleteEducation={this.onDeleteEducationInfo} onAddEducation={this.addEducationInfo} onChangePersonal={this.onChangePersonalInfo} onChangeEducation={this.onChangeEducationInfo} persInfo={this.state.personalInfo} educationArray={this.prevStateEducation} experienceArray={this.prevStateExperience}></SetCv>
+          <SetCv onClickReset = {this.onClickReset} onChangeExperience = {this.onChangeExperienceInfo} onDeleteExperience = {this.onDeleteExperienceInfo} onAddExperience = {this.onAddExperienceInfo} onDeleteEducation={this.onDeleteEducationInfo} onAddEducation={this.addEducationInfo} onChangePersonal={this.onChangePersonalInfo} onChangeEducation={this.onChangeEducationInfo} persInfo={this.state.personalInfo} educationArray={this.prevStateEducation} experienceArray={this.prevStateExperience}></SetCv>
           <CvDisplay persInfo = {this.state.personalInfo} experienceArray = {this.prevStateExperience} educationArray = {this.prevStateEducation}></CvDisplay>
       </div>        
         

@@ -17,8 +17,8 @@ class CvDisplay extends Component {
 
         const { educationArray } = this.props
         return educationArray.map((el) => {
-            console.log("rendereducationdisplay")
-            console.log(el);
+            /*console.log("rendereducationdisplay")
+            console.log(el);*/
             return <EducationDisplay from={el.from} to={el.to} degree={el.degree} subject={el.subject} universityName={el.universityName} city={el.city}></EducationDisplay>
         })
 
@@ -26,8 +26,8 @@ class CvDisplay extends Component {
     renderExperienceDisplay(){
         const { experienceArray } = this.props
         return experienceArray.map((el) => {
-            console.log("rendereducationdisplay")
-            console.log(el);
+            /*console.log("rendereducationdisplay")
+            console.log(el);*/
             return <ExperienceDisplay from={el.from} to={el.to} position = {el.position} company = {el.company} city={el.city} ></ExperienceDisplay>
         })
     }
@@ -35,7 +35,7 @@ class CvDisplay extends Component {
     render() {
 
         const { persInfo } = this.props;
-        return <div className="cv-display">
+        return <div className="cv-display" id = "cv-display">
             <div className="display-pers-info">
                 <div className="name-surname-display">
                     <div className="name-display">
